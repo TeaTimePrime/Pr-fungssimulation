@@ -1,0 +1,1168 @@
+= Aufgaben
+
+== A1
+
+[TIP]
+====
+Welche Fehlermeldung wird normalerweise *nicht* von der JVM geworfen, sondern vom Entwickler geworfen? (Wähle alle zutrefenden.)
+====
+
+
+[IMPORTANT]
+====
+[%interactive]
+
+* [ ]  StackOverflowError
+* [ ]  NullPointerException
+* [x]  NumberFormatException
+* [ ]  NoClassDefFoundError
+* [ ]  ArrayIndexOutOfBoundsException
+====
+
+
+== A2
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Table { 
+   public static void sprinkleSalt() { 
+   System.out.print("salt ");
+   }
+public static void sprinklePepper() { 
+   System.out.print("pepper "); 
+   } 
+public static void main(String[] args) { 
+   sprinkleSalt(); 
+   sprinklePepper(); 
+   } 
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  pepper salt
+* [x]  salt pepper
+* [ ]  pepper 
+*      salt
+* [ ]  salt 
+*      pepper 
+* [ ]  Keine Ausgabe 
+* [ ]  Wird Kompiliert wenn man das statisch aus der methode entfernt
+====
+
+== A3
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Cows { 
+    public static void main(String() args) { 
+    int i = 3; 
+    int j = 7; 
+    if(i > j) 
+        System.out.print("1 "); 
+    else if
+        (i + 4 > j) 
+        System.out.print("2 "); 
+    else if
+        (j > 5) System.out.print("3 "); 
+    // else                     // line x 
+    // System.out.print("4 ");  // line y 
+    } 
+}  
+-----------------
+====
+
+
+[IMPORTANT]
+====
+Welche Aussagen sind wahr? (Wähle alle, die zutreffen.)
+[%interactive]
+
+* [ ]  In dem Zustand wird der Code NICHT kompiliert
+* [x]  Wenn die Zeilen x und y unkommentiert sind, wird der Code kompiliert
+* [x]  In dem Zustand, ist die Ausgabe: 3 
+* [ ]  In dem Zustand, ist die Ausgabe: 2 3 
+* [ ]  In dem Zustand, gibt es keine Ausgabe 
+* [x]  Wenn die Zeilen x und y unkommentiert sind, lautet die Ausgabe: 3
+* [ ]  Wenn die Zeilen x und y unkommentiert sind, lautet die Ausgabe: 3 4
+====
+
+== A4
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+import java.time.*; 
+import java.time.format.*;
+public class TimeFlies {
+    public static void main(String[] args) {
+        DateTimeFormatter f1 = DateTimeFormatter.ISO_LOCAL_TIME; 
+        try {
+            LocalTime t1 = LocalTime.parse("13:57:03", f1); 
+        } catch (Exception e) { 
+            System.out.println("yikes"); 
+        } 
+        System.out.print(t1 + " "); 
+        System.out.print(t1.plusHours(1) + " ");    // line b 
+        System.out.print(t1.plusHours(4));          // line c 
+    } 
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+Wie lautet das Ergebnis, wenn die `parse(...)`-Methode gültige Argumente erhalten hat?
+[%interactive]
+
+* [ ]  13:57:03 14:57:03 17:57:03
+* [ ]  13:57:03 14:57:03 18:57:03
+* [x]  Das kompilieren schlägt fehl 
+* [ ]  Eine Exception wird in Zeile b ausgeführt  
+* [ ]  Eine Exception wird in Zeile c ausgeführt
+====
+
+== A5
+
+[TIP]
+====
+Welches sind gültige Deklarationen innerhalb einer Schnittstelle? (Wähle alle, die zutreffen.)
+====
+
+
+[IMPORTANT]
+====
+[%interactive]
+
+* [x]  `static long shanks = 343;`
+* [ ]  `protected static short timer = 22;`
+* [ ]  `private short hop = 23;`
+* [ ]  `final int stuffIt(short top);`
+* [x]  `public void doMore(long bow);`
+* [ ]  `static byte doMore(double trouble);`
+====
+
+== A6
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class OrtegorumFunction {
+    public int computeDiscontinuous(int x) {
+        int r = 1; 
+        r += x; 
+        if ((x > 4) && (x < 10)) {
+            r += 2 * x; 
+        } else (x <= 4) {
+            r += 3 * x; 
+        } else ( r += 4 * x; 
+        } 
+        r += 5 * x; 
+        return r; 
+    } 
+    public static void main(String [] args) {
+        OrtegorumFunction o = new OrtegorumFunction(); 
+        System.out.println("OF(11) is: " + o.computeDiscontinuous(11)); 
+    } 
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [ ]  OF(11) ist: 45
+* [ ]  OF(11) ist: 56
+* [ ]  OF(11) ist: 89  
+* [ ]  OF(11) is: 111  
+* [x]  Kompilierung schlägt fehl
+* [ ]  Eine Exception wird zur Laufzeit ausgelöst
+====
+
+== A7
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+import java.util.*; 
+class AL { 
+    public static void main(String[] args) { 
+        List<Long> longs = new ArrayList<>(); 
+        longs.add(new Long(1)); 
+        longs.add(2L); 
+        longs.add(new Long("3")); 
+        longs.add(4L); 
+        longs.remove(2); 
+        System.out.println(longs); 
+    }
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [x]  [1, 2, 4]
+* [ ]  [1, 3, 4] 
+* [ ]  [4, 3, 1]   
+* [ ]  [4, 2, 1]   
+* [ ]  Kompilierung schlägt fehl
+* [ ]  Eine Exception wird zur Laufzeit ausgelöst
+====
+
+== A8
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+int k = 2; 
+outer: 
+    while (true) { 
+        ++k; 
+        inner: 
+            for (int j = 6; j > 2; j--) { 
+                k = 8 - j; 
+                if (j == 3) 
+                    continue inner; 
+                break outer; 
+            } 
+            continue outer; 
+    } 
+    System.out.println(k); 
+
+-----------------
+====
+
+
+[IMPORTANT]
+====
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [x]  2
+* [ ]  3 
+* [ ]  5   
+* [ ]  6   
+* [ ]  Kompilierung schlägt fehl
+====
+
+== A9
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Abakus {
+    public static void main(String[] args) { 
+        System.out.println(-7 + 4 * 2 - 5); 
+    }
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [ ]  -27
+* [ ]  -11 
+* [ ]  -6   
+* [x]  -4   
+* [ ]  9
+* [ ]  Die Ausgabe ist nicht vorhersehbar
+====
+
+== A10
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Fuel { 
+    int getRating() { return 41; } 
+} 
+class AlternateFuel extends Fuel { 
+    int getRating() { return 42; } 
+} 
+class BioDiesel2 extends AlternateFuel { 
+    public static void main(String[] args) { 
+        new BioDiesel2().go(); 
+    } 
+    void go() { 
+        System.out.println(super.getRating());       // #1 
+        System.out.println(super.super.getRating()); // #2 
+    } 
+}  
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [ ]  42
+* [ ]  4241 
+* [ ]  4242   
+* [ ]  Eine Exception wird zur Laufzeit ausgelöst   
+* [ ]  Die Kompilierung schlägt nur aufgrund eines Fehlers in Zeile #1 fehl
+* [x]  Die Kompilierung schlägt nur aufgrund eines Fehlers in Zeile #2 fehl
+* [ ]  Die Kompilierung schlägt aufgrund von Fehlern in beiden Zeilen #1 und #2 fehl
+====
+
+== A11
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Zippy {
+ String[] x; 
+ int[] a [] = {{1,2}, {1}}; //3
+ Object c = new long[4];    //4
+ Object[] d = x;            //5
+}  
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [x]  Die Kompilierung ist erfolgreich
+* [ ]  Die Kompilierung schlägt nur aufgrund eines Fehlers in Zeile 3 fehl 
+* [ ]  Die Kompilierung schlägt nur aufgrund eines Fehlers in Zeile 4 fehl   
+* [ ]  Die Kompilierung schlägt nur aufgrund eines Fehlers in Zeile 5 fehl  
+* [ ]  Die Kompilierung schlägt aufgrund von Fehlern in den Zeilen 3 und 5 fehl
+* [ ]  Die Kompilierung schlägt aufgrund von Fehlern in den Zeilen 3, 4, und 5 fehl
+
+====
+
+== A12
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class OompahLoompah { 
+ public static void main(String [] args) { 
+     final StringBuilder str = new StringBuilder("I good! "); 
+     str.insert(2, "look ").append("and nice"); 
+     str.insert(str.length(), "!!!"); 
+     str.delete(str.length() - 2, str.length()); 
+     System.out.print(str.toString().trim()); 
+ }
+}   
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [ ]  I look good! and nice!!!
+* [ ]  I look good! and nice!! 
+* [x]  I look good! and nice!   
+* [ ]  Ilookgood! andnice!  
+* [ ]  Eine Exception tritt zur Laufzeit auf
+* [ ]  Die Kompilierung schlägt fehl
+
+====
+
+== A13
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Test {
+ public static void main(String [] args) {
+     int I = 1; 
+     do while ( I < 1 ) 
+         System.out.print("I is " + I); 
+     while ( I > 1 ) ; 
+ } 
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [ ]  I is 1
+* [ ]  I is 1 I is 1 
+* [x]  Es wird keine Ausgabe erzeugt   
+* [ ]  Die Kompilierung schlägt fehl  
+* [ ]  I is 1 I is 1 I is 1 in einer Endlosschleife 
+
+====
+
+== A14
+
+[TIP]
+====
+Welches sind gültige Variablendeklarationen?
+====
+
+
+[IMPORTANT]
+====
+Wähle alle, die zutreffen.
+[%interactive]
+
+* [x]  `int $x;`
+* [ ]  `int 123;`
+* [x]  `int _123;` 
+* [ ]  `int #dim;`
+* [ ]  `int %percent;`
+* [ ]  `int *divide;`
+* [x]  `int central_sales_region_Summer_2005_gross_sales;`
+
+====
+
+== A15
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+import java.util.function.Predicate; 
+public class MoreSheep { 
+    static boolean b = false; 
+    public static void main(String [] args) {
+        MoreSheep s = new MoreSheep();  
+        s.go(x -> b == false);        // line A 
+        s.go(x -> adder(4, 2) >= 6);  // line B 
+        s.go(x -> b = true);          // line C 
+        s.go(x -> adder(3, 2) < 4);   // line D 
+    } 
+    void go(Predicate<MoreSheep> e) {
+        MoreSheep s2 = new MoreSheep(); 
+        if(e.test(s2)) 
+            System.out.print("true "); 
+        else 
+            System.out.print("false "); 
+    } 
+    static int adder(int x, int y) {
+        return x + y; 
+    } 
+}  
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [x]  `true true true false`
+* [ ]  `true true false false`
+* [ ]  `false true true false` 
+* [ ]  `false true false false`
+* [ ]  In den Zeilen A-D liegt mindestens ein Compiler-Fehler vor 
+* [ ]  Eine Exception tritt zur Laufzeit auf  
+
+====
+
+== A16
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class TestStr {
+ public static void main(String [] args) {
+     String s1 = "bing "; 
+     String s2 = "bang "; 
+     s1 = s1.concat("boom "); 
+     String s3 = "bamm "; 
+     s3.concat("bamm "); 
+     System.out.println(s1 + s2 + s3); 
+ } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [x]  `bing boom bang bamm`
+* [ ]  `boom bing bang bamm bamm`
+* [ ]  `bing boom bang bamm bamm`
+* [ ]  Die Kompilierung schlägt fehl  
+* [ ]  Eine Exception tritt zur Laufzeit auf 
+
+====
+
+== A17
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class MyProgram {
+ public static void main(String args []) {
+     try { 
+         System.out.print("Hello world "); 
+     } 
+     finally { 
+         System.out.println("Finally executing "); 
+     } 
+ } 
+}  
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  Die Kompilierung schlägt fehl 
+* [ ]  Eine Exception tritt zur Laufzeit auf 
+* [ ]  `Hello world`
+* [x]  `Hello world Finally executing`
+* [ ]  `Finally executing Hello world`
+
+====
+
+== A18
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Ouch {
+ public static void main(String [] args) {
+     new Ouch().bleh(); 
+ } 
+ public void bleh() {
+     for (int i = 0; i < 10; i++) {
+         int f = 4; 
+         String name = "Bob - "; 
+         if (i > 7) f++; 
+     else f += 2; 
+     } 
+ System.out.println(name + f); 
+ } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  `Bob - 6`
+* [ ]  `Bob - 7`
+* [ ]  `Bob - 16`   
+* [ ]  `Bob - 22`
+* [x]  Die Kompilierung schlägt fehl 
+
+====
+
+== A19
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Tipsy { 
+    public static void main(String [] args) {
+        StringBuilder sb1 = new StringBuilder("sb1"); 
+        StringBuilder sb2 = sb1.append("x"); 
+        if(sb1.equals(sb2)) System.out.print("e1 "); 
+        StringBuilder sb3 = sbl.append("y"); 
+        if(sb3.equals(sb2)) System.out.print("e2 "); 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  Keine Ausgabe 
+* [ ]  `el`
+* [ ]  `e2`
+* [x]  `el1 e2`
+* [ ]  Die Kompilierung schlägt fehl 
+* [ ]  Eine Exception tritt zur Laufzeit auf 
+
+====
+
+== A20
+
+[TIP]
+====
+Welche Aussagen sind wahr?
+====
+
+[IMPORTANT]
+====
+
+Wähle alle, die zutreffen.
+[%interactive]
+
+* [x]  Private Methoden können in Unterklassen nicht überschrieben werden 
+* [x]  Alle Klassen in Java können höchstens eine Klasse erweitern  
+* [ ]  Alle Schnittstellen in Java können höchstens eine Schnittstelle erweitern    
+* [ ]  Alle Schnittstellen in Java können mehrere Schnittstellen erweitern  
+* [x]  Es ist möglich, Methoden in einer Klasse zu überschreiben, ohne eine andere Klasse zu erweitern 
+* [ ]  Es ist möglich, eine Klasse, die über Standardzugriff verfügt, in einem anderen Paket zu erweitern, als in dem es deklariert ist 
+
+====
+
+== A21
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Daring { 
+    static void jumper() { 
+        try { 
+            throw new Exception(); 
+        } finally { 
+            System.out.println("finally"); 
+        }
+    } 
+    public static void main(String[] args) { 
+        try { 
+            jumper(); 
+        } catch (Exception e) { 
+            System.out.println("jump exc"); 
+        } 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  `finally`
+* [ ]  `jump exc`
+* [ ]  `finally jump exc`
+* [x]  Die Kompilierung schlägt fehl 
+* [ ]  Eine nicht erfasste Exception wird zur Laufzeit ausgelöst 
+
+====
+
+== A22
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Jumps { 
+    public static void main(String [] args) { 
+        Wooper w = new Wooper(); 
+        System.out.print(w.jump(5) + " "); 
+        w.printJumps(5); 
+    } 
+} 
+class Wooper {
+    public int jump(int i) {
+        System.out.print(printJumps(i++) + " "); return i; 
+    } 
+    private int printJumps(int i) {
+        System.out.print("Jump: " + i++ + " "); return i; 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  Jump: 6 6 6 Jump: 6  
+* [ ]  Jump: 5 5 6 Jump: 5   
+* [ ]  Jump: 5 6 6 Jump: 5    
+* [x]  Die Kompilierung schlägt fehl 
+* [ ]  Eine Exception tritt zur Laufzeit auf 
+
+====
+
+== A23
+
+[TIP]
+====
+Welche Vorteile bietet die Verwendung von Java in großen Anwendungen?
+====
+
+[IMPORTANT]
+====
+
+Wähle alle, die zutreffen.
+[%interactive]
+
+* [x]  Klassen können Daten kapseln 
+* [ ]  Variablen sind in Java unveränderlich  
+* [x]  Java-Klassendateien bieten gute Sicherheit    
+* [x]  Java-Anwendungen können über JVMs kommunizieren 
+* [ ]  Java garantiert, dass keine Speicherüberläufe auftreten können
+
+====
+
+== A24
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Slicer {
+    public static void main(String[] args) {
+        int[] primes = {1, 2, 3, 5, 7, 11, 13, 17}; 
+        int[] reverse = {0, 0, 0, 0, 0, 0, 0, 0 }; 
+        int sum = 0; 
+        int pos = 0; 
+        for(primes: int x) {
+            sum = sum + x; 
+            reverse[7 - pos] = x; 
+            pos++; 
+        } 
+        System.out.println(sum + " " + reverse[0]); 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  Ausgabe von `17 1`
+* [ ]  Ausgabe vn `17 17`
+* [ ]  Ausgabe von `59 1`
+* [ ]  Ausgabe von `59 17`
+* [x]  Die Kompilierung schlägt fehl 
+* [ ]  Eine Exception tritt zur Laufzeit auf 
+
+====
+
+== A25
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+interface Hero { 
+    default String m1() { return "m1 "; }   // Zeile A
+} 
+public class Xmen implements Hero { 
+    String m1() { return "m1 over "; }      // Zeile B
+    public static void main(String[] args) { 
+        Xmen n = new Xmen(); 
+        n.go(n); 
+    } 
+    void go(Xmen n) { 
+        System.out.print(n.m1());           // Zeile C
+        System.out.print(Hero.super.m1());  // Zeile D
+        System.out.println(); 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebniss? (Wähle alle gültigen Antworten.)
+[%interactive]
+
+* [ ]  Ausgabe von `ml ml`
+* [ ]  Ausgabe von `ml over ml`
+* [ ]  Ausgabe von `ml over ml over`
+* [ ]  Kompilerfehler in Zeile A
+* [x]  Kompilerfehler in Zeile B
+* [ ]  Kompilerfehler in Zeile C
+* [ ]  Kompilerfehler in Zeile D
+
+
+====
+
+== A26
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Battery { 
+    static int x = 1; 
+    public static void main(String[] args) throws Throwable { 
+        try { 
+            if(x == 1) throw new Throwable(); 
+            System.out.println("try "); 
+        } catch (Exception e) { 
+            System.out.println("exc "); 
+        } finally { 
+            System.out.println("fin "); 
+        } 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  `try`
+* [ ]  `try fin`
+* [ ]  `exc fin`  
+* [x]  `fin` gefolgt von einer Laufzeit-Exeption    
+* [ ]  exc fin gefolgt von einer Laufzeit-Exeption     
+* [ ]  Die Kompilierung schlägt fehl   
+====
+
+== A27
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Input {
+    public static void main(String[] args) { 
+        String s = "-"; 
+        try { 
+            doMath(args[0]); 
+            s += "t "; // line 6 
+        } 
+        finally { System.out.println(s += "f "); } 
+    } 
+    public static void doMath(String a) { 
+        int y = 7 / Integer.parselnt(a); 
+    } 
+} 
+-----------------
+und die Befehlszeilenaufrufe:
+
+java Input 
+
+java Input 0 
+====
+
+[IMPORTANT]
+====
+Welche Aussagen sind wahr? (Wähle alle gültigen Antworten.)
+[%interactive]
+
+* [x]  Zeile 6 wird genau null Mal ausgeführt
+* [ ]  Zeile 6 wird genau ein Mal ausgeführt
+* [ ]  Zeile 6 wird genau zwei Mal ausgeführt
+* [ ]  Der finally-Block wird genau null Mal ausgeführt
+* [ ]  Der finally-Block wird genau ein Mal ausgeführt
+* [x]  Der finally-Block wird genau zwei Mal ausgeführt
+* [ ]  Beide Aufrufe erzeugen die gleichen exceptions 
+* [x]  Jeder Aufruf erzeugt eine andere exception
+====
+
+== A28
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Rich { 
+    String name; 
+    Rich(String n) { name = n; } 
+    public static void main(String[] args) {
+        Rich r = new Rich("Tom"); 
+        String s = "Hank"; 
+        StringBuilder sb = new StringBuilder("Leo"); 
+        System.out.println(r + " " + s + " " + sb); 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+Welche Aussagen sind wahr? (Wähle alle gültigen Antworten.)
+[%interactive]
+
+* [ ]  Die Ausgabe könnte lauten: Ton Hank Leo
+* [x]  Die Ausgabe könnte lauten: Rich @ 15db9742 Hank Leo
+* [ ]  Dieser Code verwendet das Konzept der Kapselung
+* [x]  Dieser Code verwendet das Konzept der Vererbung
+* [ ]  Dieser Code verwendet das Konzept von Schnittstellen
+* [ ]  Die Kompilierung schlägt fehl 
+====
+
+== A29
+
+[TIP]
+====
+Welche Aussage deklariert ein Array und initialisiert es mit vier Zahlen? 
+====
+[IMPORTANT]
+====
+(Wähle alle, die zutreffen.)
+[%interactive]
+
+* [x]  int x [] = {1, 0, 2, 0};
+* [ ]  int [] a = (0,1,2,3); 
+* [ ]  int [4] array;
+* [x]  int array [] = new int [4];
+* [ ]  int a [] = new int(4); 
+* [ ]  array a = new array(4); 
+====
+
+== A30
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+package xcom; 
+public class A { 
+    // code hier einfügen
+} 
+
+package xcom; 
+public class B extends A { 
+    public void doB() { System.out.println("B.doB"); }
+} 
+
+import xcom.B; 
+class TestXcom {
+    public static void main(String[] args) {
+        B b = new B(); b.doB(); b.go(); 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+Welche Methode (en), die bei "// code hier einfügen" eingefügt wird, ermöglichen die Kompilierung aller drei Dateien? (Wähle alle, die zutreffen.)
+[%interactive]
+
+* [ ]  void go() { System.out.println("a.go"); }
+* [x]  public void go() { System.out.println("a.go"); }
+* [ ]  private void go() { System.out.println("a.go"); } 
+* [ ]  protected void go() { System.out.println("a.go"); } 
+* [ ]  Keine von denen 
+====
+
+== A31
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Looping { 
+    public static void main(String [] args) {
+        int i = 5, j = 3; 
+        do { 
+            System.out.print(i + " " + j + " "); 
+        } while (i++ == 5 || ++j == 3); 
+    } 
+} 
+-----------------
+====
+
+[IMPORTANT]
+====
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [ ]  5 3
+* [x]  5 3 6 3
+* [ ]  5 3 6 4   
+* [ ]  Die Kompilierung schlägt fehl    
+* [ ]  Eine Exception tritt zur Laufzeit auf 
+====
+
+== A32
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+import java.util.*; 
+public class Ali { 
+    public static void main(String[] args) { 
+        List<Integer> a1 = new ArrayList<>(); 
+        List<long> a2 = new ArrayList<>();      // zeile a 
+        List<Ali> a3 = new ArrayList<>(); 
+        List<String> a4 = new ArrayList<>(); 
+        a1.add("42");                           // zeile b 
+        a1.add(42);                             // zeile c 
+        a3.add(new Ali()); 
+        a4.add(Ali);                            // zeile d 
+        a4.add("Ali");                          // zeile e 
+    } 
+}  
+-----------------
+====
+
+[IMPORTANT]
+====
+Wie lautet das Ergebniss?
+[%interactive]
+
+* [x]  Die Kompilierung schlägt in zeile a fehl
+* [x]  Die Kompilierung schlägt in zeile b fehl
+* [ ]  Die Kompilierung schlägt in zeile c fehl
+* [x]  Die Kompilierung schlägt in zeile d fehl
+* [ ]  Die Kompilierung schlägt in zeile e fehl
+* [ ]  Der Code wird kompiliert
+====
+
+== A33
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+class Mineral { } 
+class Gem extends Mineral { } 
+class Miner { 
+    static int x = 7; 
+    static String s = null; 
+    public static void getWeight(Mineral m) { 
+        int y = 0 / x; 
+        System.out.print(s + " "); 
+    } 
+    public static void main(String[] args) { 
+        Mineral[] ma = {new Mineral(), new Gem()}; 
+        for(Object o : ma) 
+            getWeight((Mineral) o); 
+    } 
+} 
+-----------------
+und die Befehlszeilenaufrufe:
+
+java Miner diamond 
+====
+
+[IMPORTANT]
+====
+Wie lautet die Ausgabe?
+[%interactive]
+
+* [ ]  null 
+* [x]  null null 
+* [ ]  Eine ClassCastException wird ausgegeben
+* [ ]  Eine NullPointerException wird ausgegeben
+* [ ]  Eine NoClassDefFoundError wird ausgegeben
+* [ ]  Eine ArithmeticException wird ausgegeben
+* [ ]  Eine IllegalArgumentException wird ausgegeben 
+* [ ]  Eine ArrayIndexOutOfBoundsException wird ausgegeben
+====
+
+== A34
+
+[TIP]
+====
+Gegeben ist folgendes:
+[source,java]
+-----------------
+public class Test {
+ public static void main(String [] args) {
+     int I = 1; 
+     do while ( I < 1 ) 
+         System.out.print("I is " + I); 
+     while ( I > 1 ) ; 
+ } 
+} 
+-----------------
+====
+
+
+[IMPORTANT]
+====
+
+Wie lautet das Ergebnis?
+[%interactive]
+
+* [ ]  I is 1
+* [ ]  I is 1 I is 1 
+* [x]  Es wird keine Ausgabe erzeugt   
+* [ ]  Die Kompilierung schlägt fehl  
+* [ ]  I is 1 I is 1 I is 1 in einer Endlosschleife 
+
+====

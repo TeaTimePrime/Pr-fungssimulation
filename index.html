@@ -1,0 +1,149 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/asciidoctor.js/1.5.5-5/asciidoctor.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <title>OCA Zertifizierungstool</title>
+
+
+  <style>
+
+    .header {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      color: white;
+    }
+
+    #navigation {
+      letter-spacing: -0.2em;
+    }
+
+    .pagination>li>a {
+      color: black !important;
+    }
+
+    .card-title {
+      margin-top: -0.5em;
+    }
+
+    ul.checklist,
+    ul.none {
+      list-style-type: none;
+    }
+
+    ul.checklist {
+      margin-left: 0.625em;
+    }
+
+    ul.checklist li>p:first-child>i[class^="icon-check"]:first-child,
+    ul.checklist li>p:first-child>input[type="checkbox"]:first-child {
+      margin-right: 0.25em;
+    }
+
+    ul.checklist li>p:first-child>input[type="checkbox"]:first-child {
+      position: relative;
+      top: 1px;
+    }
+
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+      position: absolute;
+      opacity: initial;
+      pointer-events: all;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #navigation a {
+      border: 1px solid red;
+      background-color: red;
+      color: white;
+      text-align: center;
+      width: 2em;
+      height: 2em;
+      display: inline-block;
+      margin: 5px;
+      padding-right: 5px;
+      padding-top: 2px;
+    }
+
+    .nav-wrapper {
+      position: sticky;
+      top: 990px;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- Header -->
+  <div class="row blue-grey valign-wrapper header">
+<!--    <div class="col m2"> <a id="play-pause-btn" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons left">pause</i></a></div> -->
+    <div class="col m3">
+      Frage <span id="current-page"></span>/<span id="total-pages"></span>
+    </div>
+    <div class="col m3"> <span id="remaining-time"></span> Minuten verbleiben
+    </div>
+    <div class="col m4">
+      <a id="finish-exam-btn" class="waves-effect waves-light btn-large red"><i class="material-icons left">email</i>PRÜFUNG ABSCHLIESSEN</a>
+    </div>
+  </div>
+  <div class="row">
+    <!-- Question -->
+    <div class="col s12 m4 l5">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Aufgabe</span>
+          <div id="question"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Answer -->
+    <div class="col s12 m4 l5">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title">Antwort</span>
+          <div id="answer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auswahl -->
+
+    <div id="navigation" class="col s12 m4 l2">
+      <ul id="oca-qn-navigation" class="pagination">
+
+      </ul>
+    </div>
+  </div>
+
+  <div class="nav-wrapper">
+    <div class="row">
+      <ul class="center hide-me-on-med-and-down">
+        <li>
+          <a id="prev-qn-btn" disabled class="waves-effect waves-light btn red"><i class="material-icons left">fast_rewind</i>Vorherige
+            Frage</a>
+          <a id="next-qn-btn" disabled class="waves-effect waves-light btn red"><i class="material-icons right">fast_forward</i>Nächste
+            Frage</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script type="module" src="oca-tester.js"></script>
+</body>
+
+</html>
